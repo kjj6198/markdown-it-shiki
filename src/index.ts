@@ -90,10 +90,10 @@ const MarkdownItShiki: MarkdownIt.PluginWithOptions<Options> = (markdownit, opti
     if (darkModeThemes) {
       const dark = _highlighter
         .codeToHtml(code, lang || 'text', darkModeThemes.dark)
-        .replace('<pre class="shiki"', '<pre class="shiki shiki-dark"')
+        .replace(`<pre class="shiki ${lang}"`, `<pre class="shiki shiki-dark ${lang}"`)
       const light = _highlighter
         .codeToHtml(code, lang || 'text', darkModeThemes.light)
-        .replace('<pre class="shiki"', '<pre class="shiki shiki-light"')
+        .replace(`<pre class="shiki ${lang}"`, `<pre class="shiki shiki-light ${lang}"`)
       return `<div class="shiki-container">${dark}${light}</div>`
     }
     else {
